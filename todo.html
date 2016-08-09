@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app = "todoApp">
+<head>
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<script type="text/javascript" src="todo.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="todo.css"
+</head>
+<body ng-controller = "todoController">
+
+<div class="container">
+	<div class=row>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>done</th>
+					<th>title</th>
+					<th>description</th>
+					<th>deadline</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="task in tasks track by $index" class="done-{{task.done}}">
+					<td><input type="checkbox" id="{{$index}}" ng-model="task.done"></td>
+					<td>{{task.title}}</td>
+					<td>{{task.description}}</td>
+					<td>{{task.deadline}}</td>
+					<td><button class="btn btn-default" ng-click="remove($index)">Remove</button>
+				</tr>
+				<tr>
+					<form ng-submit="addTask(inputTitle, inputDesc, inputDead)">
+						<td></td>
+						<td><input ng-model="inputTitle" type="text"></td>
+						<td><input ng-model="inputDesc" type="text"></td>
+						<td><input id="datepicker" ng-model="inputDead" type="text"></td>
+						<td><button class="btn btn-primary" type="submit">Add</button>
+					</form>
+				</tr>
+			</tbody>
+		</table>
+
+		
+	</div>
+</div>
+
+</body>
+</html>
