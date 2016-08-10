@@ -8,6 +8,13 @@ todoApp.controller('todoController', function($scope){
 		
 	}
 
+	function storeTasks() {
+		for (var i = 0; i < $scope.tasks.length; i++) {
+			localStorage.setItem($scope.tasks[i].title, JSON.stringify($scope.tasks[i]));
+			console.log($scope.tasks[i].title);
+		}
+	}
+
 	$scope.tasks = [];
 	$scope.loadTasks();
 
@@ -39,11 +46,6 @@ todoApp.controller('todoController', function($scope){
 		$("#datepicker").datepicker();
 	});
 
-	function storeTasks() {
-		for (var i = 0; i < $scope.tasks.length; i++) {
-			localStorage.setItem($scope.tasks[i].title, JSON.stringify($scope.tasks[i]));
-			console.log($scope.tasks[i].title);
-		}
-	}
+
 
 });

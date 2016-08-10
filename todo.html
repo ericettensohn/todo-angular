@@ -15,35 +15,36 @@
 
 	<script type="text/javascript" src="todo.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="todo.css"
+	<link rel="stylesheet" type="text/css" href="todo.css">
 </head>
 <body ng-controller = "todoController">
 
 <div class="container">
 	<div class=row>
-		<table class="table">
+		<table class="table well">
 			<thead>
 				<tr>
 					<th>done</th>
 					<th>title</th>
 					<th>description</th>
 					<th>deadline</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="task in tasks track by $index" class="done-{{task.done}}">
-					<td><input type="checkbox" id="{{$index}}" ng-model="task.done"></td>
+					<td class="chk"><input type="checkbox" id="{{$index}}" ng-model="task.done"></td>
 					<td>{{task.title}}</td>
 					<td>{{task.description}}</td>
 					<td>{{task.deadline}}</td>
 					<td><button class="btn btn-default" ng-click="remove($index)">Remove</button>
 				</tr>
 				<tr>
-					<form ng-submit="addTask(inputTitle, inputDesc, inputDead)">
-						<td></td>
-						<td><input ng-model="inputTitle" type="text"></td>
-						<td><input ng-model="inputDesc" type="text"></td>
-						<td><input id="datepicker" ng-model="inputDead" type="text"></td>
+					<form class="new-form" ng-submit="addTask(inputTitle, inputDesc, inputDead)">
+						<td class="plus">+</td>
+						<td><input ng-model="inputTitle" type="text" placeholder="title"></td>
+						<td><input ng-model="inputDesc" type="text" placeholder="description"></td>
+						<td><input id="datepicker" ng-model="inputDead" type="text" placeholder="deadline"></td>
 						<td><button class="btn btn-primary" type="submit">Add</button>
 					</form>
 				</tr>
